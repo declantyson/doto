@@ -1,0 +1,13 @@
+body
+{
+    background-image: url('dt.png');
+    background-position: center;
+    background-size: cover;
+}
+
+td
+{
+    font-size: 20px;
+    color: white;
+    verical-align: middle;
+}
