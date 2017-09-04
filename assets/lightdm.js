@@ -143,3 +143,18 @@ function build_display() {
 
     document.getElementById('content').appendChild(userTable);
 }
+
+function get_background() {
+    fetch("https://www.reddit.com/r/EarthPorn+SpacePorn+RoomPorn/hot.json").then(function(response){
+        return response.json();
+    }).then(function (json) {
+        var i = Math.floor(Math.random() * 10);
+            image = json.data.children[i].data.url,
+            loader = document.createElement('img');
+
+        loader.setAttribute('src', image);
+        loader.onload = function() {
+            document.getElementsByTagName('body')[0].style.backgroundImage = "url(" + image + ")";
+        };
+    });
+}

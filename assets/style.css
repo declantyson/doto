@@ -1,8 +1,12 @@
+@import "fonts/fonts.css";
+
 body
 {
-    background-image: url('dt.png');
-    background-position: center;
+    background-image: url('black.png');
+    background-position: center bottom;
     background-size: cover;
+    font-family: 'OpenSans', 'Ubuntu', sans-serif;
+    transition: background-image 0.5s ease-out;
 }
 
 
@@ -19,6 +23,7 @@ body
     color: white;
     vertical-align: middle;
     line-height: 50px;
+    font-family: 'Comfortaa', 'Comic Sans MS', sans-serif;
 }
 
 #user_table img {

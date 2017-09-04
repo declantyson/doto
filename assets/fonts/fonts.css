@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Comfortaa";
+    font-style: normal;
+    font-weight: 400;
+    src: url(Comfortaa/Comfortaa-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url(Open_Sans/OpenSans-Regular.ttf);
+}
