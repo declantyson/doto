@@ -5,9 +5,24 @@ body
     background-size: cover;
 }
 
-td
+
+#user_table {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
+}
+
+#user_table td
 {
     font-size: 20px;
     color: white;
-    verical-align: middle;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+#user_table img {
+    float: left;
+    height: 40px;
+    padding: 5px 20px;
 }
