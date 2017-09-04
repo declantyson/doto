@@ -1,0 +1,24 @@
+{
+  "name": "lightdm-webkit-dt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/declantyson/lightdm-webkit-dt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/declantyson/lightdm-webkit-dt/issues"
+  },
+  "homepage": "https://github.com/declantyson/lightdm-webkit-dt#readme",
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "request": "^2.81.0"
+  }
+}

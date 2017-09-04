@@ -4,3 +4,4 @@ description=Dec's Webkit Greeter
 engine=lightdm-webkit-greeter
 url=index.html
 session=gnome
+description=Dec's Webkit Greeter
