@@ -17,13 +17,8 @@ function show_prompt(text)
         }
     }
 
-    entry = document.getElementById('password_entry');
-    entry.value = '';
-
     table = document.getElementById('password_table');
     table.style.visibility = "visible";
-
-    entry.focus();
 }
 
 function show_message(text)
@@ -39,21 +34,15 @@ function show_message(text)
 
 function show_error(text)
 {
-    show_message (text);
+    show_message(text);
 }
 
 function reset()
 {
-    user_table = document.getElementById('user_table');
-    for (i in user_table.rows)
-    {
-        row = user_table.rows[i];
-        if (row.style != null) // FIXME: Don't know why there are rows with styles
-            row.style.opacity = 1;
-    }
-    table = document.getElementById('password_table');
-    table.style.visibility = "hidden";
-    password_prompt = false;
+    start_authentication(selected_user);
+    setTimeout(function () {
+        show_message("");
+    }, 4000);
 }
 
 loading_text = '';
@@ -75,7 +64,7 @@ function authentication_complete()
     else
         show_message ("Authentication Failed");
 
-    reset ();
+    reset();
     setTimeout('throbber()', 1000);
 }
 
@@ -89,17 +78,15 @@ function start_authentication(username)
 {
     var passwordInput = document.getElementById('password_entry');
     passwordInput.className = "visible";
+    passwordInput.focus();
 
     lightdm.cancel_timed_login ();
     label = document.getElementById('countdown_label');
     if (label != null)
         label.style.visibility = "hidden";
 
-    show_message("");
-    if (!password_prompt) {
-        selected_user = username;
-        lightdm.start_authentication(username);
-    }
+    selected_user = username;
+    lightdm.start_authentication(username);
 }
 
 function provide_secret()
@@ -148,17 +135,18 @@ function build_display() {
     }
 
 
-    var passwordRow = document.createElement('tr'),
+    var passwordTable = document.createElement('table'),
+        passwordRow = document.createElement('tr'),
         passwordCell = document.createElement('td'),
         passwordPrompt = document.createElement('td'),
         passwordForm = document.createElement('form'),
         passwordInput = document.createElement('input');
 
-    passwordRow.id = "password_table";
+    passwordTable.id = "password_table";
     //passwordRow.style.visibility = "hidden";
 
     passwordPrompt.id = "password_prompt";
-    passwordPrompt.innerText = "Password";
+    // passwordPrompt.innerText = "Password";
 
     passwordForm.action = "javascript: provide_secret()";
 
@@ -168,9 +156,10 @@ function build_display() {
 
     passwordForm.appendChild(passwordInput);
     passwordCell.appendChild(passwordForm);
-    // passwordRow.appendChild(passwordPrompt);
+    passwordRow.appendChild(passwordPrompt);
     passwordRow.appendChild(passwordCell);
-    userTable.appendChild(passwordRow);
+    passwordTable.appendChild(passwordRow);
+    userTable.appendChild(passwordTable);
 
     document.getElementById('content').appendChild(userTable);
 }

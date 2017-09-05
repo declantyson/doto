@@ -6,7 +6,7 @@ body
     background-position: center bottom;
     background-size: cover;
     font-family: 'OpenSans', 'Ubuntu', sans-serif;
-    transition: background-image 0.5s ease-out;
+    -webkit-transition: background-image 0.5s ease-out;
 }
 
 #content {
@@ -23,7 +23,7 @@ body
 #user_table {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     bottom: 0;
     text-align: center;
 }
@@ -58,7 +58,7 @@ body
     opacity: 0;
     position: relative;
     top: 45px;
-    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
     text-align: center;
     letter-spacing: 3px;
     padding: 4px;
@@ -78,7 +78,7 @@ body
     position: fixed;
     left: 50%;
     top: 150px;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
 }
 
 #clock div {
