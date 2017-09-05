@@ -15,7 +15,8 @@ body
     height: 100%;
     top: 0;
     left: 0;
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 35%,rgba(0,0,0,0.65) 100%);
+    /*background: -webkit-linear-gradient(top, rgba(0,0,0,0) 35%,rgba(0,0,0,0.65) 100%);*/
+    background: rgba(0,0,0,0.5);
 }
 
 
@@ -72,3 +73,20 @@ body
     color: #ffffff;
     opacity: 0.75;
 }
+
+#clock {
+    position: fixed;
+    left: 50%;
+    top: 150px;
+    transform: translateX(-50%);
+}
+
+#clock div {
+    font-size: 144px;
+    color: #ffffff;
+    display: inline;
+    text-align: center;
+    padding: 0 10px;
+    text-shadow: 3px 3px 25px black
+}
+
