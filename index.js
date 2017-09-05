@@ -1,6 +1,6 @@
 // Get backgrounds from reddit
 
-const backgroundEndpoint = "https://www.reddit.com/r/EarthPorn+SpacePorn+RoomPorn/hot.json",
+const backgroundEndpoint = "https://www.reddit.com/r/EarthPorn+SpacePorn+RoomPorn+beerwithaview+telephotolandscapes/hot.json",
       request = require("request"),
       fs = require("fs");
 
