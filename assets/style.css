@@ -9,12 +9,22 @@ body
     transition: background-image 0.5s ease-out;
 }
 
+#content {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 35%,rgba(0,0,0,0.65) 100%);
+}
+
 
 #user_table {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 100px;
+    bottom: 0;
+    text-align: center;
 }
 
 #user_table td
@@ -24,10 +34,41 @@ body
     vertical-align: middle;
     line-height: 50px;
     font-family: 'Comfortaa', 'Comic Sans MS', sans-serif;
+    padding: 10px 0;
 }
 
 #user_table img {
-    float: left;
     height: 40px;
     padding: 5px 20px;
+}
+
+#user_table p {
+    margin: 0;
+}
+
+#password_entry {
+    font-size: 27px;
+    line-height: 50px;
+    background: transparent;
+    border:  none;
+    outline: none;
+    border-bottom: solid 1px #ffffff;
+    color: #ffffff;
+    opacity: 0;
+    position: relative;
+    top: 45px;
+    transition: all 0.2s ease-out;
+    text-align: center;
+    letter-spacing: 3px;
+    padding: 4px;
+}
+
+#password_entry.visible {
+    opacity: 1;
+    top: 0;
+}
+
+#password_entry::-webkit-input-placeholder  {
+    color: #ffffff;
+    opacity: 0.75;
 }

@@ -1,1 +1,1 @@
-var bgCount = 4;
+var bgCount = 6;
