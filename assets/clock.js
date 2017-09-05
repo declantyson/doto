@@ -24,8 +24,14 @@ function updateTime() {
         minutes = document.getElementById('clock_minutes'),
         now = new Date();
 
-    hours.innerText = now.getHours();
-    minutes.innerText = now.getMinutes();
+    var hourDisplay = now.getHours();
+    if(hourDisplay < 10) hourDisplay = "0" + hourDisplay;
+
+    var minuteDisplay = now.getMinutes();
+    if(minuteDisplay < 10) minuteDisplay = "0" + minuteDisplay;
+
+    hours.innerText = hourDisplay;
+    minutes.innerText = minuteDisplay;
 }
 
 function tick() {
