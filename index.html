@@ -13,17 +13,20 @@
                          image: []
                      }
                  ]
-             };*/   
+             };*/
 
         </script>
 
         <script src="assets/bg-count.js"></script>
+        <script src="assets/cinematic-bg-count.js"></script>
         <script src="assets/background.js"></script>
         <script src="assets/clock.js"></script>
         <script src="assets/lightdm.js"></script>
     </head>
 
     <body>
+        <video id="cinematic-video" loop autoplay></video>
+
         <div id="content"></div>
 
         <table id="message_table" style="margin: auto; visibility: hidden;">
@@ -37,7 +40,7 @@
     </body>
 
     <script>
-        get_background();
+        get_cinematic_background();
         initialize_clock();
         build_display();
     </script>

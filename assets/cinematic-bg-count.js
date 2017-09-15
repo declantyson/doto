@@ -1,0 +1,1 @@
+var bgCount = 8;
