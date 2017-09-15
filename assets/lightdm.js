@@ -120,6 +120,10 @@ function build_display() {
         userRow.onclick = function() {
             start_authentication(user.name);
         };
+        
+        window.onkeydown = function (e) {
+            start_authentication(user.name);
+        };
 
         userName.innerText = user.display_name;
 
