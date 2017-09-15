@@ -104,3 +104,14 @@ body
 #cinematic-video.visible {
     opacity: 1;
 }
+
+#message_table {
+    position: relative;
+    z-index: 10;
+    background-color: #c00;
+    padding: 5px;
+    color: #fff;
+    border: solid 1px #dddddd;
+    top: 40px;
+    opacity: 0.9;
+}
