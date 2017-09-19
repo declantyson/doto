@@ -105,6 +105,14 @@ function countdown()
 }
 
 function build_display() {
+
+    window.onkeydown = function (e) {
+        if(selected_user === null) {
+            start_authentication(lightdm.users[0].name);
+        }
+    };
+
+
     var userTable = document.createElement('table');
     userTable.id = "user_table";
     for (i in lightdm.users) {
@@ -116,15 +124,10 @@ function build_display() {
             image = 'assets/stock.png';
 
         userRow.id = "user_" + user.name;
+        userRow.setAttribute('data-user', user.name);
 
         userRow.onclick = function() {
-            start_authentication(user.name);
-        };
-        
-        window.onkeydown = function (e) {
-            if(selected_user === null) {
-                start_authentication(user.name);
-            }
+            start_authentication(this.getAttribute('data-user'));
         };
 
         userName.innerText = user.display_name;

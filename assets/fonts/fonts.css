@@ -6,8 +6,8 @@
 }
 
 @font-face {
-    font-family: "Open Sans";
+    font-family: "OpenSans";
     font-style: normal;
     font-weight: 400;
-    src: url(Open_Sans/OpenSans-Regular.ttf);
+    src: url(Open_Sans/OpenSans-Light.ttf);
 }

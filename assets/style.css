@@ -22,9 +22,8 @@ body
 
 #user_table {
     position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    bottom: 0;
+    left: 40px;
+    bottom: 40px;
     text-align: center;
 }
 
@@ -34,17 +33,19 @@ body
     color: white;
     vertical-align: middle;
     line-height: 50px;
-    font-family: 'Comfortaa', 'Comic Sans MS', sans-serif;
+    font-family: 'OpenSans', sans-serif;
     padding: 10px 0;
 }
 
 #user_table img {
     height: 40px;
     padding: 5px 20px;
+    float: left;
 }
 
 #user_table p {
     margin: 0;
+    text-align: left;
 }
 
 #password_entry {
@@ -72,17 +73,19 @@ body
 #password_entry::-webkit-input-placeholder  {
     color: #ffffff;
     opacity: 0.75;
+    font-weight: 100;
 }
 
 #clock {
     position: fixed;
-    left: 50%;
-    top: 150px;
-    -webkit-transform: translateX(-50%);
+    right: 40px;
+    top: 40px;
+    -webkit-user-select: none;
 }
 
 #clock div {
-    font-size: 144px;
+    font-size: 96px;
+    line-height: 96px;
     color: #ffffff;
     display: inline;
     text-align: center;
