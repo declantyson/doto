@@ -122,7 +122,9 @@ function build_display() {
         };
         
         window.onkeydown = function (e) {
-            start_authentication(user.name);
+            if(selected_user === null) {
+                start_authentication(user.name);
+            }
         };
 
         userName.innerText = user.display_name;
