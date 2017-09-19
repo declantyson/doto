@@ -1,0 +1,13 @@
+{
+  "manifest_version" : 2,
+  "name" : "Doto",
+  "version" : "0.0.1",
+  "description" : "Elegant new tab page",
+  "icons" : {
+    
+  },
+  "homepage_url" : "https://github.com/declantyson/doto-tab",
+  "chrome_url_overrides" : {
+  	"newtab" : "index.html"
+  }
+}
