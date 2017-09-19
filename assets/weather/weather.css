@@ -1,0 +1,18 @@
+#weather {
+    position: fixed;
+    top: 144px;
+    right: 40px;
+    line-height: 80px;
+}
+
+#weather img {
+    height: 80px;
+}
+
+#weather p {
+    float: left;
+    color: #ffffff;
+    line-height: 80px;
+    margin: 0 15px;
+    font-size: 24px;
+}
