@@ -1,0 +1,23 @@
+#news {
+    position: fixed;
+    right: 40px;
+    top: 244px;
+    text-align: right;
+    font-size: 18px;
+    line-height: 28px;
+    color: #ffffff;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-out;
+}
+
+#news.visible {
+    opacity: 1;
+}
+
+#news p {
+    margin: 0;
+}
+
+#news small {
+    display: block;
+}
