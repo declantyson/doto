@@ -3,6 +3,12 @@
     top: 144px;
     right: 40px;
     line-height: 80px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-out;
+}
+
+#weather.visible {
+    opacity: 1;
 }
 
 #weather img {

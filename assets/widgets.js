@@ -18,22 +18,24 @@ function widget(api, callback, failure) {
     request.send();
 }
 
-// Weather widget
-widget(
-    "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=c3ec0e268239d674fbe215f89868ee73&units=metric",
-    function (data) {
-        var weather = document.createElement('div'),
-            temperature = document.createElement('p'),
-            image = document.createElement('img');
+function weather() {
+    // Weather widget
+    widget(
+        "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=c3ec0e268239d674fbe215f89868ee73&units=metric",
+        function (data) {
+            var weather = document.getElementById('weather'),
+                temperature = document.createElement('p'),
+                image = document.createElement('img');
 
-        weather.id = "weather";
-        image.setAttribute('src', 'assets/weather/' + data.weather[0].icon + '.png');
-        temperature.innerHTML = data.main.temp.toFixed(0) + "&deg;";
-        weather.appendChild(image);
-        weather.appendChild(temperature);
-        document.getElementById('content').appendChild(weather);
-    },
-    function () {
-        // do nothing
-    }
-);
+            image.setAttribute('src', 'assets/weather/' + data.weather[0].icon + '.png');
+            weather.innerHTML = "";
+            weather.className = "visible";
+            temperature.innerHTML = data.main.temp.toFixed(0) + "&deg;";
+            weather.appendChild(image);
+            weather.appendChild(temperature);
+        },
+        function () {
+            // do nothing
+        }
+    );
+}

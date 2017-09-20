@@ -1,1 +1,1 @@
-var cinematicBgCount = 13;
+var cinematicBgCount = 15;
