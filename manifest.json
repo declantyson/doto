@@ -6,7 +6,7 @@
   "icons" : {
     
   },
-  "homepage_url" : "https://github.com/declantyson/doto-tab",
+  "homepage_url" : "https://declantyson.github.io/doto/",
   "chrome_url_overrides" : {
   	"newtab" : "index.html"
   }

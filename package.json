@@ -1,5 +1,5 @@
 {
-  "name": "lightdm-webkit-dt",
+  "name": "doto",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,16 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/declantyson/lightdm-webkit-dt.git"
+    "url": "git+https://github.com/declantyson/doto.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/declantyson/lightdm-webkit-dt/issues"
+    "url": "https://github.com/declantyson/doto/issues"
   },
-  "homepage": "https://github.com/declantyson/lightdm-webkit-dt#readme",
+  "homepage": "https://github.com/declantyson/doto#readme",
   "devDependencies": {
     "fs": "0.0.1-security",
     "request": "^2.81.0"
+  },
+  "dependencies": {
+    "jsdom": "^11.2.0"
   }
 }
