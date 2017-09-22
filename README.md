@@ -6,6 +6,8 @@
 
 ## Installation
 
+### As a login screen
+
 1. Install [lightdm](https://wiki.archlinux.org/index.php/LightDM) as your session manager
 2. Install [lightdm-webkit2-greeter](http://antergos.github.io/web-greeter/)
 3. Download and save this repository into your `lightdm-webkit2-greeter` themes directory, normally located at `usr/share/lightdm-webkit/themes/`
@@ -15,6 +17,10 @@
 [greeter]
   webkit_theme        = doto
 ```
+
+### As a chrome extension
+
+You can use Doto as your new tab page by navigating to chrome://extensions/ and clicking `Load unpacked extension`. 
 
 ## Obtaining more cinemagraphs
 
