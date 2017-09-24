@@ -1,1 +1,1 @@
-var cinematic_bg_count = 16;
+var cinematic_bg_count = 19;

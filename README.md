@@ -24,7 +24,7 @@ You can use Doto as your new tab page by navigating to chrome://extensions/ and 
 
 ## Obtaining more cinemagraphs
 
-There's a handy npm script which browses [/r/Cinemagraphs](https://reddit.com/r/Cinemagraphs) and scrapes appropriately sized and formatted files. Just run `npm start` in the folder directory.
+There's a handy npm script which browses [/r/Cinemagraphs](https://reddit.com/r/Cinemagraphs) and scrapes appropriately sized and formatted files. Just run `./download.sh` in the folder directory.
 
 Alternatively save any mp4s you like in the `/assets/backgrounds` directory. They are numerically indexed. In order to ensure your new file is displayed update `/assets/cinematic_bg_count.js` to show the new total.
 
