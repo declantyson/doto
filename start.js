@@ -9,3 +9,13 @@ setInterval(news, 5000);
 if(typeof lightdm !== "undefined") {
     build_display();
 }
+
+function debug() {
+    lightdm = {
+        users: [
+            { name: "DT", display_name: "Dec" },
+            { name: "DT2", display_name: "Dec2" }
+        ]
+    };
+    build_display();
+}

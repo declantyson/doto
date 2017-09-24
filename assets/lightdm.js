@@ -1,35 +1,41 @@
 password_prompt = false;
 selected_user = null;
 time_remaining = 0;
+loading_text = '';
 
-function show_prompt(text)
+    function show_prompt(text)
 {
     password_prompt = true;
 
-    label = document.getElementById('password_prompt');
+    var label = document.getElementById('password_prompt'),
+        user_table = document.getElementById('user_table'),
+        table = document.getElementById('password_table');
 
-    user_table = document.getElementById('user_table');
-    for (i in user_table.rows)
+    for (var i in user_table.rows)
     {
-        row = user_table.rows[i];
-        if (row.id !== ('user_' + selected_user)) { // FIXME: Don't know why there are rows with styles
-            row.style.visibility = "hidden";
+        var row = user_table.rows[i];
+        if (row.id !== ('user_' + selected_user)) {
+            row.className = "hidden";
+        } else {
+            row.className = "";
         }
     }
 
-    table = document.getElementById('password_table');
     table.style.visibility = "visible";
 }
 
 function show_message(text)
 {
-    table = document.getElementById('message_table');
-    label = document.getElementById('message_label');
+    var table = document.getElementById('message_table'),
+        label = document.getElementById('message_label');
+
     label.innerHTML = text;
-    if (text.length > 0)
+
+    if (text.length > 0) {
         table.style.visibility = "visible";
-    else
+    } else {
         table.style.visibility = "hidden";
+    }
 }
 
 function show_error(text)
@@ -45,24 +51,26 @@ function reset()
     }, 4000);
 }
 
-loading_text = '';
 
 function throbber()
 {
     loading_text += '.';
-    if (loading_text == '....')
-        loading_text = '.'
-    label = document.getElementById('countdown_label');
+    if (loading_text === '....') {
+        loading_text = '.';
+    }
+
+    var label = document.getElementById('countdown_label');
     label.innerHTML = loading_text;
     setTimeout('throbber()', 1000);
 }
 
 function authentication_complete()
 {
-    if (lightdm.is_authenticated)
-        lightdm.login (lightdm.authentication_user, lightdm.default_session);
-    else
-        show_message ("Authentication Failed");
+    if (lightdm.is_authenticated) {
+        lightdm.login(lightdm.authentication_user, lightdm.default_session);
+    } else {
+        show_message("Authentication Failed");
+    }
 
     reset();
     setTimeout('throbber()', 1000);
@@ -76,32 +84,45 @@ function timed_login(user)
 
 function start_authentication(username)
 {
-    var passwordInput = document.getElementById('password_entry');
+    var passwordInput = document.getElementById('password_entry'),
+        label = document.getElementById('countdown_label');
     passwordInput.className = "visible";
     passwordInput.focus();
 
-    lightdm.cancel_timed_login ();
-    label = document.getElementById('countdown_label');
-    if (label != null)
-        label.style.visibility = "hidden";
-
     selected_user = username;
+
+    for (var i in user_table.rows)
+    {
+        var row = user_table.rows[i];
+        if (row.id !== ('user_' + selected_user)) {
+            row.className = "hidden";
+        } else {
+            row.className = "";
+        }
+    }
+
+    if (label !== null) {
+        label.style.visibility = "hidden";
+    }
+
+    lightdm.cancel_timed_login();
     lightdm.start_authentication(username);
 }
 
 function provide_secret()
 {
-    entry = document.getElementById('password_entry');
+    var entry = document.getElementById('password_entry');
     lightdm.provide_secret(entry.value);
 }
 
 function countdown()
 {
-    label = document.getElementById('countdown_label');
+    var label = document.getElementById('countdown_label');
     label.innerHTML = ' in ' + time_remaining + ' seconds';
     time_remaining--;
-    if (time_remaining >= 0)
+    if (time_remaining >= 0) {
         setTimeout('countdown()', 1000);
+    }
 }
 
 function build_display() {
@@ -152,10 +173,8 @@ function build_display() {
         passwordInput = document.createElement('input');
 
     passwordTable.id = "password_table";
-    //passwordRow.style.visibility = "hidden";
 
     passwordPrompt.id = "password_prompt";
-    // passwordPrompt.innerText = "Password";
 
     passwordForm.action = "javascript: provide_secret()";
 
