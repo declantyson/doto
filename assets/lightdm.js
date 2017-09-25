@@ -1,9 +1,9 @@
-password_prompt = false;
-selected_user = null;
-time_remaining = 0;
-loading_text = '';
+var password_prompt = false,
+    selected_user = null,
+    time_remaining = 0,
+    loading_text = '';
 
-    function show_prompt(text)
+function show_prompt(text)
 {
     password_prompt = true;
 
