@@ -30,9 +30,13 @@ Alternatively save any mp4s you like in the `/assets/backgrounds` directory. The
 
 ## Changing the news/weather sources
 
-Edit `/assets/widgets.js` to point to your location, metrics and new sources.
+Edit `settings.js` to point to your location, units and new sources.
 
 - Weather is fed by [OpenWeatherMap](https://openweathermap.org/current).
 - News is sourced by [News API](https://newsapi.org/abc-news-au-api).
 
 It is recommended you also obtain your own API keys to avoid any traffic bursts.
+
+## Contributor thanks
+
+- [systemplado](https://github.com/systemplado)
