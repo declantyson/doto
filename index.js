@@ -68,10 +68,10 @@ const updateBackground = (endpoint, var_name) => {
                                     console.log(`Downloaded ${source} -> Converting to mp4...`);
                                     videofy(path, path.replace('gif', 'mp4'), { rate: 30 }, (err) => {
                                         if(err) {
-                                            console.error(error);
+                                            console.error(err);
                                         } else {
                                             fs.unlink(path, (err) => {
-                                                if(err) console.error(err)
+                                                if(err) console.error(err);
                                             });
                                         }
                                     });

@@ -41,9 +41,8 @@ function weather() {
 }
 
 function news() {
-    var sources = settings.getNewsSources();
+    var sources = settings.getNewsSources(),
         source = sources[Math.floor(Math.random() * sources.length)];
-
 
     widget(source,
         function (data) {
@@ -65,5 +64,5 @@ function news() {
         function () {
             
         }
-    )
+    );
 }

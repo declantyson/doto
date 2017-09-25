@@ -3,6 +3,37 @@ var password_prompt = false,
     time_remaining = 0,
     loading_text = '';
 
+
+function start_authentication(username)
+{
+    var passwordInput = document.getElementById('password_entry'),
+        user_table = document.getElementById('user_table'),
+        label = document.getElementById('countdown_label');
+    passwordInput.className = 'visible';
+    passwordInput.focus();
+
+    selected_user = username;
+
+    for (var i in user_table.rows)
+    {
+        if(typeof user_table.rows[i] !== 'undefined') {
+            var row = user_table.rows[i];
+            if (row.id !== ('user_' + selected_user)) {
+                row.className = 'hidden';
+            } else {
+                row.className = '';
+            }
+        }
+    }
+
+    if (label !== null) {
+        label.style.visibility = 'hidden';
+    }
+
+    lightdm.cancel_timed_login();
+    lightdm.start_authentication(username);
+}
+
 function show_prompt(text)
 {
     password_prompt = true;
@@ -15,13 +46,13 @@ function show_prompt(text)
     {
         var row = user_table.rows[i];
         if (row.id !== ('user_' + selected_user)) {
-            row.className = "hidden";
+            row.className = 'hidden';
         } else {
-            row.className = "";
+            row.className = '';
         }
     }
 
-    table.style.visibility = "visible";
+    table.style.visibility = 'visible';
 }
 
 function show_message(text)
@@ -32,9 +63,9 @@ function show_message(text)
     label.innerHTML = text;
 
     if (text.length > 0) {
-        table.style.visibility = "visible";
+        table.style.visibility = 'visible';
     } else {
-        table.style.visibility = "hidden";
+        table.style.visibility = 'hidden';
     }
 }
 
@@ -47,7 +78,7 @@ function reset()
 {
     start_authentication(selected_user);
     setTimeout(function () {
-        show_message("");
+        show_message('');
     }, 4000);
 }
 
@@ -69,7 +100,7 @@ function authentication_complete()
     if (lightdm.is_authenticated) {
         lightdm.login(lightdm.authentication_user, lightdm.default_session);
     } else {
-        show_message("Authentication Failed");
+        show_message('Authentication Failed');
     }
 
     reset();
@@ -80,33 +111,6 @@ function timed_login(user)
 {
     lightdm.login (lightdm.timed_login_user);
     setTimeout(throbber, 1000);
-}
-
-function start_authentication(username)
-{
-    var passwordInput = document.getElementById('password_entry'),
-        label = document.getElementById('countdown_label');
-    passwordInput.className = "visible";
-    passwordInput.focus();
-
-    selected_user = username;
-
-    for (var i in user_table.rows)
-    {
-        var row = user_table.rows[i];
-        if (row.id !== ('user_' + selected_user)) {
-            row.className = "hidden";
-        } else {
-            row.className = "";
-        }
-    }
-
-    if (label !== null) {
-        label.style.visibility = "hidden";
-    }
-
-    lightdm.cancel_timed_login();
-    lightdm.start_authentication(username);
 }
 
 function provide_secret()
@@ -135,8 +139,10 @@ function build_display() {
 
 
     var userTable = document.createElement('table');
-    userTable.id = "user_table";
-    for (i in lightdm.users) {
+    userTable.id = 'user_table';
+    for (var i in lightdm.users) {
+        if(typeof lightdm.users[i] === 'undefined') continue;
+
         var user = lightdm.users[i],
             userRow = document.createElement('tr'),
             userCell = document.createElement('td'),
@@ -144,7 +150,7 @@ function build_display() {
             userName = document.createElement('p'),
             image = 'assets/images/lock.png';
 
-        userRow.id = "user_" + user.name;
+        userRow.id = 'user_' + user.name;
         userRow.setAttribute('data-user', user.name);
 
         userRow.onclick = function() {
@@ -172,15 +178,15 @@ function build_display() {
         passwordForm = document.createElement('form'),
         passwordInput = document.createElement('input');
 
-    passwordTable.id = "password_table";
+    passwordTable.id = 'password_table';
 
-    passwordPrompt.id = "password_prompt";
+    passwordPrompt.id = 'password_prompt';
 
-    passwordForm.action = "javascript: provide_secret()";
+    passwordForm.action = 'javascript: provide_secret()';
 
-    passwordInput.id = "password_entry";
-    passwordInput.type = "password";
-    passwordInput.setAttribute("placeholder", "Password");
+    passwordInput.id = 'password_entry';
+    passwordInput.type = 'password';
+    passwordInput.setAttribute('placeholder', 'Password');
 
     passwordForm.appendChild(passwordInput);
     passwordCell.appendChild(passwordForm);

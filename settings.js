@@ -44,4 +44,4 @@ var settings = {
 
       return sources;
     }
-}
+};
