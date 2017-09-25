@@ -61,7 +61,7 @@ function throbber()
 
     var label = document.getElementById('countdown_label');
     label.innerHTML = loading_text;
-    setTimeout('throbber()', 1000);
+    setTimeout(throbber, 1000);
 }
 
 function authentication_complete()
@@ -73,13 +73,13 @@ function authentication_complete()
     }
 
     reset();
-    setTimeout('throbber()', 1000);
+    setTimeout(throbber, 1000);
 }
 
 function timed_login(user)
 {
     lightdm.login (lightdm.timed_login_user);
-    setTimeout('throbber()', 1000);
+    setTimeout(throbber, 1000);
 }
 
 function start_authentication(username)
@@ -121,7 +121,7 @@ function countdown()
     label.innerHTML = ' in ' + time_remaining + ' seconds';
     time_remaining--;
     if (time_remaining >= 0) {
-        setTimeout('countdown()', 1000);
+        setTimeout(countdown, 1000);
     }
 }
 

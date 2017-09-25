@@ -22,6 +22,17 @@ if(process.env.npm_config_gif) {
     allowedFormats.push("gif");
 }
 
+const tryDownload = (reason) => {
+    console.log(reason);
+    retries--;
+    if(retries > 0) {
+        console.log(`${retries} retries remaining.\n`);
+        updateBackground(endpoint, "cinematic_bg_count");
+    } else {
+        console.error(reasons.SOMETHING_BAD);
+    }
+};
+
 
 const updateBackground = (endpoint, var_name) => {
         request.get(endpoint, function (err, res, body) {
@@ -106,17 +117,5 @@ const updateBackground = (endpoint, var_name) => {
         }
     });
 };
-
-const tryDownload = (reason) => {
-    console.log(reason);
-    retries--;
-    if(retries > 0) {
-        console.log(`${retries} retries remaining.\n`);
-        updateBackground(endpoint, "cinematic_bg_count");
-    } else {
-        console.error(reasons.SOMETHING_BAD);
-    }
-};
-
 
 tryDownload(reasons.START);

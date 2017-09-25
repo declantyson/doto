@@ -1,3 +1,19 @@
+function tick() {
+    var separator = document.getElementById('clock_separator');
+    separator.style.visibility = "visible";
+    updateTime();
+
+    setTimeout(tock, 1000);
+}
+
+function tock() {
+    var separator = document.getElementById('clock_separator');
+    separator.style.visibility = "hidden";
+    updateTime();
+
+    setTimeout(tick, 1000);
+}
+
 function initialize_clock() {
     var clock = document.createElement('div'),
         hours = document.createElement('div'),
@@ -32,20 +48,4 @@ function updateTime() {
 
     hours.innerText = hourDisplay;
     minutes.innerText = minuteDisplay;
-}
-
-function tick() {
-    var separator = document.getElementById('clock_separator');
-    separator.style.visibility = "visible";
-    updateTime();
-
-    setTimeout(tock, 1000);
-}
-
-function tock() {
-    var separator = document.getElementById('clock_separator');
-    separator.style.visibility = "hidden";
-    updateTime();
-
-    setTimeout(tick, 1000);
 }
