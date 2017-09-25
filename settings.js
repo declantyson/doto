@@ -19,7 +19,7 @@ var settings = {
     getWeatherURL: function(options) {
         var url = 'https://api.openweathermap.org/data/2.5/weather?';
 
-        options = options || "city";
+        options = options || 'city';
         url += 'appid='+settings.weather.api_key+'&units='+settings.weather.units;
 
         switch (options) {
@@ -44,4 +44,4 @@ var settings = {
 
       return sources;
     }
-}
+};
