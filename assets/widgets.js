@@ -28,9 +28,9 @@ function weather() {
                 image = document.createElement('img');
 
             image.setAttribute('src', 'assets/weather/' + data.weather[0].icon + '.png');
-            weather.innerHTML = "";
-            weather.className = "visible";
-            temperature.innerHTML = data.main.temp.toFixed(0) + "&deg;";
+            weather.innerHTML = '';
+            weather.className = 'visible';
+            temperature.innerHTML = data.main.temp.toFixed(0) + '&deg;';
             weather.appendChild(image);
             weather.appendChild(temperature);
         },
@@ -51,10 +51,10 @@ function news() {
                 description = document.createElement('small'),
                 article = data.articles[Math.floor(Math.random() * data.articles.length)];
 
-            news.className = "";
+            news.className = '';
             setTimeout(function () {
-                news.innerHTML = "";
-                news.className = "visible";
+                news.innerHTML = '';
+                news.className = 'visible';
                 title.innerText = article.title;
                 description.innerText = article.description;
 

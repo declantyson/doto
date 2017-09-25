@@ -45,11 +45,9 @@ function show_prompt(text)
     for (var i in user_table.rows)
     {
         var row = user_table.rows[i];
-        if (row.id !== ('user_' + selected_user)) {
-            row.className = 'hidden';
-        } else {
-            row.className = '';
-        }
+
+        if (row.id !== ('user_' + selected_user)) row.className = 'hidden';
+        else row.className = '';
     }
 
     table.style.visibility = 'visible';
