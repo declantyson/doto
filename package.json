@@ -17,11 +17,11 @@
     "url": "https://github.com/declantyson/doto/issues"
   },
   "homepage": "https://github.com/declantyson/doto#readme",
-  "devDependencies": {
-    "fs": "0.0.1-security",
-    "request": "^2.81.0"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "jsdom": "^11.2.0"
+    "fs": "0.0.1-security",
+    "jsdom": "^11.2.0",
+    "request": "^2.81.0",
+    "videofy-plus": "0.0.3"
   }
 }

@@ -142,7 +142,7 @@ function build_display() {
             userCell = document.createElement('td'),
             userImage = document.createElement('img'),
             userName = document.createElement('p'),
-            image = 'assets/lock.png';
+            image = 'assets/images/lock.png';
 
         userRow.id = "user_" + user.name;
         userRow.setAttribute('data-user', user.name);
