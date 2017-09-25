@@ -21,7 +21,7 @@ function widget(api, callback, failure) {
 function weather() {
     // Weather widget
     widget(
-        "https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=c3ec0e268239d674fbe215f89868ee73&units=metric",
+        settings.getWeatherURL(),
         function (data) {
             var weather = document.getElementById('weather'),
                 temperature = document.createElement('p'),
@@ -41,11 +41,7 @@ function weather() {
 }
 
 function news() {
-    var sources = [
-            "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=e0fddafbeb304299913237a89228f313",
-            "https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=e0fddafbeb304299913237a89228f313",
-            "https://newsapi.org/v1/articles?source=ars-technica&sortBy=top&apiKey=e0fddafbeb304299913237a89228f313"
-        ],
+    var sources = settings.getNewsSources();
         source = sources[Math.floor(Math.random() * sources.length)];
 
 
