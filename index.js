@@ -3,7 +3,7 @@
 const endpoint       = 'https://www.reddit.com/r/cinemagraphs/hot.json',
       request        = require('request'),
       fs             = require('fs'),
-      videofy        = require('videofy'),
+      videofy        = require('videofy-plus'),
       jsdom          = require('jsdom'),
       { JSDOM }      = jsdom,
       reasons        = {
