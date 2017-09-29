@@ -1,6 +1,7 @@
 @import "fonts/fonts.css";
 @import "weather/weather.css";
 @import "news/news.css";
+@import "settings/settings.css";
 
 body
 {

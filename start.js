@@ -1,7 +1,12 @@
 get_cinematic_background();
 initialize_clock();
-weather();
-news();
+
+if(typeof chrome !== "undefined") {
+    syncChromeSettings();
+} else {
+    weather();
+    news();
+}
 
 setInterval(weather, 5000);
 setInterval(news, 5000);

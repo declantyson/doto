@@ -1,0 +1,26 @@
+#settings-ui {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px;
+    width: 15%;
+    height: calc(100% - 20px);
+    background-color: rgba(0,0,0,0.4);
+}
+
+#settings-ui.present {
+    display: block;
+}
+
+.settings-input {
+    margin: 0 0 20px 0;
+    padding: 10px;
+    width: calc(100% - 20px);
+}
+
+.settings-label {
+    color: #ffffff;
+    margin: 5px 0;
+    display: block;
+}
