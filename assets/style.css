@@ -5,7 +5,7 @@
 
 body
 {
-    background-image: url('black.png');
+    background-image: url('images/black.png');
     background-position: center bottom;
     background-size: cover;
     font-family: 'OpenSans', 'Ubuntu', sans-serif;

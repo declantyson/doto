@@ -2,6 +2,7 @@
     position: fixed;
     right: 40px;
     top: 244px;
+    width: calc(100% - 380px);
     text-align: right;
     font-size: 18px;
     line-height: 28px;
@@ -20,4 +21,5 @@
 
 #news small {
     display: block;
+    line-height: 20px;
 }

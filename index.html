@@ -2,7 +2,6 @@
     <head>
         <link rel="stylesheet" href="assets/style.css"/>
 
-        <script src="assets/bg_count.js"></script>
         <script src="assets/cinematic_bg_count.js"></script>
         <script src="assets/background.js"></script>
         <script src="assets/clock.js"></script>
@@ -29,12 +28,18 @@
         </table>
 
         <div id="settings-ui">
+            <p class="settings-header">Weather</p>
             <label class="settings-label">City</label>
-            <input type="text" id="weather-city" class="settings-input" placeholder="City"/>
+            <input type="text" name="weather-city" class="settings-input" placeholder="City"/>
             <label class="settings-label">Country</label>
-            <input type="text" id="weather-country" class="settings-input" placeholder="Country"/>
+            <input type="text" name="weather-country" class="settings-input" placeholder="Country"/>
             <label class="settings-label">OpenWeather API Key</label>
-            <input type="text" id="weather-api_key" class="settings-input" placeholder="API Key"/>
+            <input type="text" name="weather-api_key" class="settings-input" placeholder="API Key"/>
+
+            <p class="settings-header">News</p>
+            <div id="news-sources"></div>
+            <label class="settings-label">NewsAPI Key</label>
+            <input type="text" name="news-api_key" class="settings-input" placeholder="API Key"/>
         </div>
     </body>
 

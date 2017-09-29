@@ -4,8 +4,9 @@
     top: 0;
     left: 0;
     padding: 30px;
-    width: 15%;
+    width: 240px;
     height: calc(100% - 20px);
+    overflow: scroll;
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -23,4 +24,16 @@
     color: #ffffff;
     margin: 5px 0;
     display: block;
+}
+
+.settings-header {
+    font-size: 16px;
+    border-bottom: solid 1px rgba(255,255,255,0.8);
+    color: #ffffff;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.settings-checkbox {
+    margin: 0 10px 0 0;
 }

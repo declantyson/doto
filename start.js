@@ -1,7 +1,7 @@
 get_cinematic_background();
 initialize_clock();
 
-if(typeof chrome !== "undefined") {
+if(typeof chrome !== 'undefined') {
     syncChromeSettings();
 } else {
     weather();
