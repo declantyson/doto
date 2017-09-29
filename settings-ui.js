@@ -12,7 +12,7 @@ function bindTextSettings() {
 
         input.onchange = function() {
             updateTextSetting(this);
-        }
+        };
     }
 }
 
@@ -54,7 +54,7 @@ function bindNewsSources() {
         function () {
             // TODO
         }
-    )
+    );
 }
 
 function updateTextSetting(input) {
@@ -91,7 +91,7 @@ function updateCheckboxSetting(input) {
     chrome.storage.sync.set({ settings: settings }, function () {
         weather();
         news();
-    });
+});
 }
 
 function syncChromeSettings() {

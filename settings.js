@@ -19,7 +19,7 @@ var settings = {
 
     templates: {
         news: {
-            feed: { sort_by : "top" }
+            feed: { sort_by : 'top' }
         }
     },
 
