@@ -95,7 +95,16 @@ function updateCheckboxSetting(input) {
 }
 
 function syncChromeSettings() {
-    document.getElementById('settings-ui').className = 'present';
+    var settingsToggle = document.getElementById('settings-toggle'),
+        settingsUi = document.getElementById('settings-ui');
+
+    settingsToggle.className = 'present';
+    settingsUi.className = 'present';
+
+    settingsToggle.onclick = function () {
+        settingsToggle.className = settingsToggle.className.indexOf('show') === -1 ? 'present show' : 'present';
+        settingsUi.className = settingsUi.className.indexOf('show') === -1 ? 'present show' : 'present';
+    };
 
     chrome.storage.sync.get('settings', function (data) {
         if(data.settings.hasOwnProperty('weather')) {

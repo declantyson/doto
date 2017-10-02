@@ -2,16 +2,64 @@
     display: none;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -300px;
     padding: 30px;
     width: 240px;
     height: calc(100% - 20px);
     overflow: scroll;
     background-color: rgba(0,0,0,0.4);
+    -webkit-transition: left 0.4s ease-out;
 }
 
 #settings-ui.present {
     display: block;
+}
+
+#settings-ui.show {
+    left: 0;
+}
+
+#settings-toggle {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    -webkit-transform: scale(0.8);
+    opacity: 0.4;
+    -webkit-transition: left 0.4s ease-out;
+}
+
+#settings-toggle.present {
+    display: block;
+}
+
+#settings-toggle.show {
+    left: 300px;
+}
+
+#settings-toggle img {
+    -webkit-transition: -webkit-transform 0.8s ease-out;
+    -webkit-transform: rotateZ(0deg);
+}
+
+#settings-toggle img.larger {
+    height: 45px;
+}
+
+#settings-toggle img.smaller {
+    height: 25px;
+    position: relative;
+    top: 7px;
+    left: -15px;
+}
+
+#settings-toggle:hover img.larger {
+    -webkit-transform: rotateZ(360deg);
+}
+
+#settings-toggle:hover img.smaller {
+    -webkit-transform: rotateZ(-360deg);
 }
 
 .settings-input {
