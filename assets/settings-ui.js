@@ -107,20 +107,25 @@ function syncChromeSettings() {
     };
 
     chrome.storage.sync.get('settings', function (data) {
-        if(data.settings.hasOwnProperty('weather')) {
-           settings.weather = data.settings.weather;
-        } else {
-            chrome.storage.sync.set({ settings: { weather : settings.weather } });
-        }
+	if(!data.hasOwnProperty('settings')) {
+	    chrome.storage.sync.set({ settings: settings });
+	} else {
 
-        weather();
+            if(data.settings.hasOwnProperty('weather')) {
+                settings.weather = data.settings.weather;
+            } else {
+                chrome.storage.sync.set({ settings: { weather : settings.weather } });
+            }
 
-        if(data.settings.hasOwnProperty('news')) {
-            settings.news = data.settings.news;
-        } else {
-            chrome.storage.sync.set({ settings: { news : settings.news } });
-        }
+            weather();
 
+            if(data.settings.hasOwnProperty('news')) {
+                settings.news = data.settings.news;
+            } else {
+                chrome.storage.sync.set({ settings: { news : settings.news } });
+            }
+
+	}
         news();
 
         bindTextSettings();

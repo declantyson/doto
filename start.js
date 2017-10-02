@@ -1,17 +1,18 @@
 get_cinematic_background();
 initialize_clock();
 
-if(typeof chrome !== 'undefined') {
-    syncChromeSettings();
-} else {
-    weather();
-    news();
-}
-
 setInterval(weather, 5000);
 setInterval(news, 5000);
 
-if(typeof lightdm !== 'undefined') build_display();
+
+if(typeof lightdm !== 'undefined') {
+    build_display();
+} else {
+    syncChromeSettings();
+}
+
+news();
+weather();
 
 function debug() {
     lightdm = {
