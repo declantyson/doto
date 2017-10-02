@@ -7,6 +7,7 @@ var settings = {
         units: 'metric',
         api_key: 'c3ec0e268239d674fbe215f89868ee73'
     },
+
     news: {
         feed: [
             { source: 'bbc-news', sort_by: 'top'},
@@ -14,6 +15,12 @@ var settings = {
             { source: 'ars-technica', sort_by: 'top'}
         ],
         api_key: 'e0fddafbeb304299913237a89228f313'
+    },
+
+    templates: {
+        news: {
+            feed: { sort_by : 'top' }
+        }
     },
 
     getWeatherURL: function(options) {
@@ -32,6 +39,12 @@ var settings = {
 
         return url;
     },
+
+    getPotenitalNewsSources: function () {
+        var url = 'https://newsapi.org/v1/sources';
+        return url;
+    },
+
     getNewsSources: function() {
       var url = 'https://newsapi.org/v1/articles?',
           sources = [];
@@ -43,5 +56,9 @@ var settings = {
       });
 
       return sources;
+    },
+
+    getSettingTemplate(setting, subsetting) {
+        return JSON.parse(JSON.stringify(settings.templates[setting][subsetting]));
     }
 };

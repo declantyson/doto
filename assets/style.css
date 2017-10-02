@@ -1,10 +1,11 @@
 @import "fonts/fonts.css";
 @import "weather/weather.css";
 @import "news/news.css";
+@import "settings/settings.css";
 
 body
 {
-    background-image: url('black.png');
+    background-image: url('images/black.png');
     background-position: center bottom;
     background-size: cover;
     font-family: 'OpenSans', 'Ubuntu', sans-serif;

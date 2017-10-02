@@ -2,12 +2,13 @@
     <head>
         <link rel="stylesheet" href="assets/style.css"/>
 
-        <script src="assets/bg_count.js"></script>
         <script src="assets/cinematic_bg_count.js"></script>
         <script src="assets/background.js"></script>
         <script src="assets/clock.js"></script>
         <script src="assets/lightdm.js"></script>
         <script src="assets/widgets.js"></script>
+        <script src="assets/settings-ui.js"></script>
+
     </head>
 
     <body>
@@ -28,6 +29,25 @@
             </tbody>
         </table>
 
+        <div id="settings-toggle">
+            <img src="assets/images/settings.png" alt="Settings" class="larger">
+            <img src="assets/images/settings.png" alt="Settings" class="smaller">
+        </div>
+
+        <div id="settings-ui">
+            <p class="settings-header">Weather</p>
+            <label class="settings-label">City</label>
+            <input type="text" name="weather-city" class="settings-input" placeholder="City"/>
+            <label class="settings-label">Country</label>
+            <input type="text" name="weather-country" class="settings-input" placeholder="Country"/>
+            <label class="settings-label">OpenWeather API Key</label>
+            <input type="text" name="weather-api_key" class="settings-input" placeholder="API Key"/>
+
+            <p class="settings-header">News</p>
+            <div id="news-sources"></div>
+            <label class="settings-label">NewsAPI Key</label>
+            <input type="text" name="news-api_key" class="settings-input" placeholder="API Key"/>
+        </div>
     </body>
 
     <script src="settings.js"></script>
