@@ -58,7 +58,7 @@ var settings = {
       return sources;
     },
 
-    getSettingTemplate(setting, subsetting) {
+    getSettingTemplate: function(setting, subsetting) {
         return JSON.parse(JSON.stringify(settings.templates[setting][subsetting]));
     }
 };
