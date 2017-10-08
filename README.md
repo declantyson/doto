@@ -17,12 +17,24 @@
 
 ```
 [greeter]
+  secure              = false
   webkit_theme        = doto
 ```
 
+5. If you cannot log-in, try changing the following in your `lightdm` conf (normally located at `/etc/lightdm/lightdm.conf`):
+
+```
+[Seat:*]
+# under this setting or its equivalent
+# change the user-session to your preferred session or DE
+# for example:
+user-session=bspwm
+```
+
+
 ### As a chrome extension
 
-You can use Doto as your new tab page by navigating to chrome://extensions/ and clicking `Load unpacked extension`. 
+You can use Doto as your new tab page by navigating to chrome://extensions/ and clicking `Load unpacked extension`.
 
 ## Obtaining more cinemagraphs
 
