@@ -31,10 +31,10 @@ function start_authentication(username)
                 sessionDiv.id = 'session_div';
                 sessionMenu.id = 'session_menu';
 
-                for (var i in lightdm.sessions) {
-                    if(typeof lightdm.sessions[i] === 'undefined') continue;
+                for (var j in lightdm.sessions) {
+                    if(typeof lightdm.sessions[j] === 'undefined') continue;
 
-                    var session = lightdm.sessions[i],
+                    var session = lightdm.sessions[j],
                         sessionOption = document.createElement('option');
 
                     sessionOption.innerText = session.name;
@@ -42,7 +42,7 @@ function start_authentication(username)
                     sessionOption.title = session.comment;
 
                     if (session.key === previous_session)
-                        selectedIndex = i;
+                        selectedIndex = j;
 
                     sessionMenu.appendChild(sessionOption);
                 }
@@ -123,7 +123,7 @@ function throbber()
 
 function authentication_complete()
 {
-    var sessionMenu = document.getElementById("session_menu"),
+    var sessionMenu = document.getElementById('session_menu'),
         selected_session = sessionMenu.options[sessionMenu.selectedIndex].value;
 
     if (lightdm.is_authenticated) {
