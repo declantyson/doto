@@ -1,7 +1,8 @@
 var password_prompt = false,
     selected_user = null,
     time_remaining = 0,
-    loading_text = '';
+    loading_text = '',
+    previous_session = '';
 
 
 function start_authentication(username)
@@ -22,6 +23,33 @@ function start_authentication(username)
                 row.className = 'hidden';
             } else {
                 row.className = '';
+
+                var sessionDiv = document.createElement('div'),
+                    sessionMenu = document.createElement('select'),
+                    selectedIndex = 0;
+
+                sessionDiv.id = 'session_div';
+                sessionMenu.id = 'session_menu';
+
+                for (var j in lightdm.sessions) {
+                    if(typeof lightdm.sessions[j] === 'undefined') continue;
+
+                    var session = lightdm.sessions[j],
+                        sessionOption = document.createElement('option');
+
+                    sessionOption.innerText = session.name;
+                    sessionOption.value = session.key;
+                    sessionOption.title = session.comment;
+
+                    if (session.key === previous_session)
+                        selectedIndex = j;
+
+                    sessionMenu.appendChild(sessionOption);
+                }
+
+                sessionMenu.selectedIndex = selectedIndex;
+                sessionDiv.appendChild(sessionMenu);
+                document.querySelector('#user_' + selected_user + ' td').appendChild(sessionDiv);
             }
         }
     }
@@ -95,8 +123,11 @@ function throbber()
 
 function authentication_complete()
 {
+    var sessionMenu = document.getElementById('session_menu'),
+        selected_session = sessionMenu.options[sessionMenu.selectedIndex].value;
+
     if (lightdm.is_authenticated) {
-        lightdm.login(lightdm.authentication_user, lightdm.default_session);
+        lightdm.login(lightdm.authentication_user, selected_session);
     } else {
         show_message('Authentication Failed');
     }
@@ -131,6 +162,7 @@ function build_display() {
 
     window.onkeydown = function (e) {
         if(selected_user === null) {
+            previous_session = lightdm.users[0].session;
             start_authentication(lightdm.users[0].name);
         }
     };
@@ -150,8 +182,10 @@ function build_display() {
 
         userRow.id = 'user_' + user.name;
         userRow.setAttribute('data-user', user.name);
+        userName.classList.add('username');
 
         userRow.onclick = function() {
+            previous_session = user.session;
             start_authentication(this.getAttribute('data-user'));
         };
 
@@ -167,7 +201,6 @@ function build_display() {
         userRow.appendChild(userCell);
         userTable.appendChild(userRow);
     }
-
 
     var passwordTable = document.createElement('table'),
         passwordRow = document.createElement('tr'),

@@ -27,6 +27,7 @@
 [Seat:*]
 # under this setting or its equivalent
 # change the user-session to your preferred session or DE
+# available sessions are usually found at /usr/share/xsessions
 # for example:
 user-session=bspwm
 ```

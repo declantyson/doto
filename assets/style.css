@@ -129,3 +129,31 @@ body
     top: 40px;
     opacity: 0.9;
 }
+
+.username {
+    display: inline;
+}
+
+#session_div {
+    display: inline;
+    background: url('images/down_arrow.png') no-repeat right;
+    background-size: 20px;
+    background-position-x: 135px;
+}
+
+#session_menu {
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    border-radius: none;
+    font-size: 18px;
+    margin-left: 30px;
+    padding-left: 10px;
+    padding-right: 30px;
+    width: 130px;
+}
+
+#session_menu, #session_menu option {
+    overflow: ellipsis;
+}
