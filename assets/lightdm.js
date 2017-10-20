@@ -15,8 +15,7 @@ function start_authentication(username)
 
     selected_user = username;
 
-    for (var i in user_table.rows)
-    {
+    for (var i in user_table.rows) {
         if(typeof user_table.rows[i] !== 'undefined') {
             var row = user_table.rows[i];
             if (row.id !== ('user_' + selected_user)) {
@@ -49,7 +48,9 @@ function start_authentication(username)
 
                 sessionMenu.selectedIndex = selectedIndex;
                 sessionDiv.appendChild(sessionMenu);
-                document.querySelector('#user_' + selected_user + ' td').appendChild(sessionDiv);
+
+                if ( !document.getElementById('session_div') )
+                    document.querySelector('#user_' + selected_user + ' td').appendChild(sessionDiv);
             }
         }
     }
