@@ -174,7 +174,7 @@ function get_user_index(username) {
     for (var i=0; i < lightdm.users.length; i++) {
         if (typeof lightdm.users[i] === 'undefined') continue;
 
-        if (username == lightdm.users[i].name) return i;
+        if (username === lightdm.users[i].name) return i;
     }
 
     return false;
@@ -204,15 +204,15 @@ function build_display() {
         }
         else {
             // up arrow
-            if (e.keyCode == 38) {
-                get_next_user(true)
+            if (e.keyCode === 38) {
+                get_next_user(true);
             }
             // down arrow
-            else if (e.keyCode == 40) {
-                get_next_user()
+            else if (e.keyCode === 40) {
+                get_next_user();
             }
             // enter
-            else if(e.keyCode == 13) {
+            else if(e.keyCode === 13) {
                 //lightdm.start_authentication(selected_user);
             }
         }
