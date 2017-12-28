@@ -11,6 +11,7 @@ function start_authentication(username)
         user_table = document.getElementById('user_table'),
         label = document.getElementById('countdown_label');
     passwordInput.className = 'visible';
+    passwordInput.value = '';
     passwordInput.focus();
 
     selected_user = username;
@@ -49,8 +50,12 @@ function start_authentication(username)
                 sessionMenu.selectedIndex = selectedIndex;
                 sessionDiv.appendChild(sessionMenu);
 
-                if ( !document.getElementById('session_div') )
-                    document.querySelector('#user_' + selected_user + ' td').appendChild(sessionDiv);
+
+                if ( document.getElementById('session_div') ) {
+                   var sessionElement = document.getElementById('session_div');
+                   sessionElement.parentNode.removeChild(sessionElement);
+                }
+                document.querySelector('#user_' + selected_user + ' td').appendChild(sessionDiv);
             }
         }
     }
@@ -60,7 +65,6 @@ function start_authentication(username)
     }
 
     lightdm.cancel_timed_login();
-    lightdm.start_authentication(username);
 }
 
 function show_prompt(text)
@@ -146,7 +150,14 @@ function timed_login(user)
 function provide_secret()
 {
     var entry = document.getElementById('password_entry');
-    lightdm.provide_secret(entry.value);
+
+    lightdm.cancel_authentication();
+    lightdm.start_authentication(selected_user);
+
+    setTimeout( function () {
+        lightdm.provide_secret(entry.value);
+    }, 50);
+
 }
 
 function countdown()
@@ -159,13 +170,53 @@ function countdown()
     }
 }
 
+function get_user_index(username) {
+    for (var i=0; i < lightdm.users.length; i++) {
+        if (typeof lightdm.users[i] === 'undefined') continue;
+
+        if (username === lightdm.users[i].name) return i;
+    }
+
+    return false;
+}
+
+function get_next_user(reverse=false) {
+    var user_index = get_user_index(selected_user);
+    var next_user_index = user_index;
+
+    if (!reverse) {
+        if (++next_user_index >= lightdm.users.length) next_user_index = 0;
+    }
+    else {
+        if (--next_user_index < 0) next_user_index = lightdm.users.length - 1;
+    }
+
+    start_authentication(lightdm.users[next_user_index].name);
+}
+
 function build_display() {
 
     window.onkeydown = function (e) {
-        if(selected_user === null) {
+        if (selected_user === null) {
             previous_session = lightdm.users[0].session;
-            start_authentication(lightdm.users[0].name);
+            selected_user = lightdm.users[0].name;
+            start_authentication(selected_user);
         }
+        else {
+            // up arrow
+            if (e.keyCode === 38) {
+                get_next_user(true);
+            }
+            // down arrow
+            else if (e.keyCode === 40) {
+                get_next_user();
+            }
+            // enter
+            else if(e.keyCode === 13) {
+                //lightdm.start_authentication(selected_user);
+            }
+        }
+
     };
 
 
