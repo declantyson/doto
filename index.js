@@ -25,16 +25,23 @@ const tryDownload = (reason) => {
     retries--;
     if(retries > 0) {
         console.log(`${retries} retries remaining.\n`);
-        updateBackground(endpoint, 'cinematic_bg_count');
+        updateBackground(endpoint);
     } else {
         console.error(reasons.SOMETHING_BAD);
     }
 };
 
+const buildBackgroundsJsFile = () => {
+    fs.readdir('assets/backgrounds', (err, items) => {
+        if(err) console.error(err);
+        let itemsArr = `var backgrounds = ${JSON.stringify(items)};`;
+        fs.writeFile('assets/backgrounds.js', itemsArr, (err) => {
+            if(err) console.error(err);
+        })
+    });
+};
 
-const updateBackground = (endpoint, var_name) => {
-    // TODO: Reduce the complexity of this function
-
+const updateBackground = (endpoint) => {
     request.get(endpoint, function (err, res, body) {
         let i = Math.floor(Math.random() * 10),
             json = JSON.parse(body),
@@ -48,63 +55,58 @@ const updateBackground = (endpoint, var_name) => {
             if (resolutions.length < 0) tryDownload(reasons.CANNOT_DETERMINE);
             else if (resolutions[0].height > resolutions[0].width) tryDownload(reasons.INCORRECT_ORIENTATION);
             else {
-                let urlComponents = source.split('.'),
-                    format = urlComponents[urlComponents.length - 1];
+                let urlComponents = source.split('/'),
+                    filename = urlComponents[urlComponents.length - 1],
+                    filenameComponents = filename.split('.'),
+                    format = filenameComponents[filenameComponents.length - 1],
+                    path = `assets/backgrounds/${filenameComponents[0]}.${format}`;
 
                 if (allowedFormats.indexOf(format) === -1) tryDownload(reasons.DISALLOWED_FORMAT);
+
                 else {
                     if(format === 'gif') {
                         // convert gif files to mp4
-                        fs.readFile(`assets/${var_name}.js`, 'utf-8', (err, content) => {
-                            let count = parseInt(content.replace(`var ${var_name} = `, '').replace(';', '')),
-                                path = `assets/backgrounds/${count}.gif`;
 
-                            request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
-                                count++;
-                                fs.writeFile(`assets/${var_name}.js`, `var ${var_name} = ${count};`, (err) => {
-                                    console.log(`Downloaded ${source} -> Converting to mp4...`);
-                                    videofy(path, path.replace('gif', 'mp4'), { rate: 30 }, (err) => {
+                        request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
+                            console.log(`Downloaded ${source} -> Converting to mp4...`);
+                            videofy(path, path.replace('gif', 'mp4'), { rate: 30 }, (err) => {
+                                if (err) console.error(err);
+                                else {
+                                    fs.unlink(path, (err) => {
                                         if (err) console.error(err);
-                                        else {
-                                            fs.unlink(path, (err) => {
-                                                if (err) console.error(err);
-                                            });
-                                        }
+                                        buildBackgroundsJsFile();
                                     });
-                                });
+                                }
                             });
                         });
+
                     } else if(format === 'gifv') {
                         //  get mp4 source from gifv
+
                         request(source, (err, response, body) => {
                             let dom = new JSDOM(body),
                                 sourceEl = dom.window.document.querySelector('source');
+
                             if (sourceEl === null) tryDownload(reasons.SOMETHING_BAD);
                             else {
                                 source = `http:${sourceEl.getAttribute('src')}`;
-                                fs.readFile(`assets/${var_name}.js`, 'utf-8', (err, content) => {
-                                    let count = parseInt(content.replace(`var ${var_name} = `, '').replace(';', '')),
-                                        path = `assets/backgrounds/${count}.mp4`;
-                                    request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
-                                        count++;
-                                        fs.writeFile(`assets/${var_name}.js`, `var ${var_name} = ${count};`, (err) => {
-                                            console.log('Downloaded ' + source);
-                                        });
-                                    });
+                                request(source).pipe(fs.createWriteStream(path.replace('gifv', 'mp4'))).on('close', (err) => {
+                                    if(err) console.error(err);
+
+                                    buildBackgroundsJsFile();
+                                    console.log('Downloaded ' + source);
                                 });
                             }
                         });
-                    } else {
-                        fs.readFile(`assets/${var_name}.js`, 'utf-8', (err, content) => {
-                            let count = parseInt(content.replace(`var ${var_name} = `, '').replace(';', '')),
-                                path = `assets/backgrounds/${count}.mp4`;
 
-                            request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
-                                count++;
-                                fs.writeFile(`assets/${var_name}.js`, `var ${var_name} = ${count};`, (err) => {
-                                    console.log('Downloaded ' + source);
-                                });
-                            });
+                    } else {
+                        // Just save the file
+
+                        request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
+                            if(err) console.error(err);
+
+                            console.log('Downloaded ' + source);
+                            buildBackgroundsJsFile();
                         });
                     }
                 }
