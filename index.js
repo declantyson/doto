@@ -34,10 +34,10 @@ const tryDownload = (reason) => {
 const buildBackgroundsJsFile = () => {
     fs.readdir('assets/backgrounds', (err, items) => {
         if(err) console.error(err);
-        let itemsArr = `var backgrounds = ${JSON.stringify(items)};`;
+        let itemsArr = `var backgrounds = ${JSON.stringify(items).replace(/"/g, '\'')};`;
         fs.writeFile('assets/backgrounds.js', itemsArr, (err) => {
             if(err) console.error(err);
-        })
+        });
     });
 };
 
@@ -89,8 +89,9 @@ const updateBackground = (endpoint) => {
 
                             if (sourceEl === null) tryDownload(reasons.SOMETHING_BAD);
                             else {
-                                source = `http:${sourceEl.getAttribute('src')}`;
-                                request(source).pipe(fs.createWriteStream(path.replace('gifv', 'mp4'))).on('close', (err) => {
+                                source = `http:${sourceEl.getAttribute('src')}`,
+                                path = path.replace('gifv', 'mp4');
+                                request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
                                     if(err) console.error(err);
 
                                     buildBackgroundsJsFile();
