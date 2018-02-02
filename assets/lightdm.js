@@ -180,7 +180,9 @@ function get_user_index(username) {
     return false;
 }
 
-function get_next_user(reverse=false) {
+function get_next_user(reverse) {
+    reverse = reverse || false;
+
     var user_index = get_user_index(selected_user);
     var next_user_index = user_index;
 
