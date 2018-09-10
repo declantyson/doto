@@ -32,6 +32,12 @@
 user-session=bspwm
 ```
 
+### Troubleshooting
+
+If you are not seeing background images try installing the following packages:
+- webkitgtk
+- gstreamer1.0-libav
+- gstreamer1.0-plugins-bad-videoparsers
 
 ### As a chrome extension
 
