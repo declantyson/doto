@@ -21,7 +21,7 @@
   "devDependencies": {},
   "dependencies": {
     "fs": "0.0.1-security",
-    "jsdom": "^11.10.0",
+    "jsdom": "^16.5.0",
     "request": "^2.85.0",
     "videofy-plus": "0.0.3"
   }
